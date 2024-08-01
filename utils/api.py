@@ -1,10 +1,11 @@
 import requests
 import time
 
-class paxos_api():
+class CryptoPubAPI():
 
     def get_data(self, url):
         resp = requests.get(url)
+        resp.raise_for_status()  # Ensure we raise an exception for bad responses
         return resp.json()
 
     def get_messari_asset_metrics(self, token):
@@ -20,12 +21,12 @@ class paxos_api():
             # get data from PAXOS API V2 -------------------
             ticker_raw = self.get_ticker(market)
             orderbook_raw = self.get_orderbook(market)
-            
+
             ticker = self.process_ticker_data(ticker_raw)
             odbk = self.process_orderbook_data(orderbook_raw)
 
             return {
-                'market': market, 
+                'market': market,
                 'asset': market.split('USD')[0],
                 'vol_today': ticker['vol_today'],
                 'vol_today_usd': ticker['vol_today_usd'],
@@ -72,7 +73,7 @@ class paxos_api():
             spread_bps = (data['spread']/data['mid_price'])*10000
 
             final_output[market] = [
-                market, 
+                market,
                 data['vol_today'],
                 data['vol_today_usd'],
                 data['mid_price'],
@@ -118,7 +119,7 @@ class paxos_api():
 
 
     def process_orderbook_data(self, orderbook):
-        
+
         top_bids=float(orderbook['bids'][0]['price'])
         top_asks=float(orderbook['asks'][0]['price'])
         mid_price=(top_bids+top_asks)/2
@@ -157,14 +158,14 @@ class paxos_api():
         bid_price_200bps = mid_price - (0.02 * mid_price) # meaning the price 200bps away from mid price. e.q. midprice=20000, bid price 200bps away = $20000 - (0.02*20000) = $19600
         ask_price_200bps = mid_price + (0.02 * mid_price) # meaning the price 200bps away from mid price. e.q. midprice=20000, bid price 200bps away = $20000 + (0.02*20000) = $20600
         total_bids_size_at_200bps = 0
-        total_asks_size_at_200bps = 0    
+        total_asks_size_at_200bps = 0
         bid_cnt_200bps = 0
         ask_cnt_200bps = 0
 
-        
+
         bid_accum_amt = 0
         bid_order_cnt = 0
-        for bid in orderbook['bids']: 
+        for bid in orderbook['bids']:
             bid_order_cnt += 1
             bid_price = float(bid['price'])
             bid_amount = float(bid['amount'])
@@ -173,7 +174,7 @@ class paxos_api():
 
             if bid_price >= 0.5*mid_price:
                 # Making accumulative chart
-                if bid_price in orderbook_full: 
+                if bid_price in orderbook_full:
                     orderbook_full[bid_price]['qty'] += bid_amount
                 else:
                     orderbook_full[bid_price] = {'price': bid_price, 'qty': bid_amount, 'side': 'bid'}
@@ -188,9 +189,9 @@ class paxos_api():
                 total_bids_size_at_100bps += bid_amount
                 bid_cnt_100bps = bid_order_cnt
             if bid_price >= bid_price_200bps:
-                total_bids_size_at_200bps += bid_amount    
+                total_bids_size_at_200bps += bid_amount
                 bid_cnt_200bps = bid_order_cnt
-            
+
         ask_accum_amt = 0
         ask_order_cnt = 0
         for ask in orderbook['asks']:
@@ -203,24 +204,24 @@ class paxos_api():
             if ask_price <= 1.5*mid_price:
                 if ask_price in orderbook_full:
                     orderbook_full[ask_price]['qty'] += ask_amount
-                else: 
+                else:
                     orderbook_full[ask_price] = {'price': ask_price, 'qty': ask_amount, 'side': 'ask'}
 
             # sum from top ask price till it hit the price at 25bps, 50bps, 100bps, 200bps
-            if ask_price <= ask_price_25bps: 
+            if ask_price <= ask_price_25bps:
                 total_asks_size_at_25bps += ask_amount
                 ask_cnt_25bps = ask_order_cnt
 
-            if ask_price <= ask_price_50bps: 
+            if ask_price <= ask_price_50bps:
                 total_asks_size_at_50bps += ask_amount
                 ask_cnt_50bps = ask_order_cnt
 
-            if ask_price <= ask_price_100bps: 
+            if ask_price <= ask_price_100bps:
                 total_asks_size_at_100bps += ask_amount
                 ask_cnt_100bps = ask_order_cnt
 
-            if ask_price <= ask_price_200bps: 
-                total_asks_size_at_200bps += ask_amount    
+            if ask_price <= ask_price_200bps:
+                total_asks_size_at_200bps += ask_amount
                 ask_cnt_200bps = ask_order_cnt
 
         return {
@@ -244,12 +245,12 @@ class paxos_api():
             'ask_liq_50bps': total_asks_size_at_50bps*mid_price,
             'ask_cnt_50bps': ask_cnt_50bps,
             'bid_cnt_50bps': bid_cnt_50bps,
-            
+
             'bid_liq_100bps': total_bids_size_at_100bps*mid_price,
             'ask_liq_100bps': total_asks_size_at_100bps*mid_price,
             'ask_cnt_100bps': ask_cnt_100bps,
             'bid_cnt_100bps': bid_cnt_100bps,
-            
+
             'bid_liq_200bps': total_bids_size_at_200bps*mid_price,
             'ask_liq_200bps': total_asks_size_at_200bps*mid_price,
             'ask_cnt_200bps': ask_cnt_200bps,
