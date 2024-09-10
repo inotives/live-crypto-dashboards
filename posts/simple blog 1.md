@@ -1,3 +1,3 @@
-# Simple Blog 1
+# Python Learning Part 1
 
-some text
+## Python function introduction 
