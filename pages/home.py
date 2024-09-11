@@ -1,5 +1,4 @@
 import streamlit as st
-from utils.blogs import BLOGS
 
 def app():
     st.session_state.page = 'Home Page'

@@ -10,22 +10,22 @@ if 'fetch_data_running' not in st.session_state:
     st.session_state.fetch_data_running = False
 
 
-st.logo(str(CURRENT_DIR / "logo.png"), link="https://www.linkedin.com/in/inotives/", icon_image=str(CURRENT_DIR / "logo.png"))
+st.logo(str(CURRENT_DIR / "logo.png"), link="", icon_image=str(CURRENT_DIR / "logo.png"))
 
 # Import all pages
-from pages import home,liquidity_dashboard, about, exchanges_metrics, stablecoin_metrics, article
+from pages import home,liquidity_dashboard, about, exchanges_metrics, crypto_analysis, article
 
 # Navigations
 pg = st.navigation({
     "Overview": [
         st.Page(home.app, title='Home', default=True, icon=':material/home:', url_path=""),
-        st.Page(about.app, title='About Me', icon=':material/grade:', url_path="/about"),
-        st.Page(article.app, title='Articles', icon=':material/grade:', url_path="/article")
+        st.Page(about.app, title='About Me', icon=':material/account_circle:', url_path="/about"),
+        st.Page(article.app, title='Articles', icon=':material/auto_stories:', url_path="/article")
     ],
-    "Dashboards Showcase": [
-        st.Page(liquidity_dashboard.app, title='Liquidity Dashboard', icon=':material/analytics:', url_path="/liquidity_dashboard"),
+    "Projects / Dashboards ": [
+        st.Page(liquidity_dashboard.app, title='Liquidity Dashboard', icon=':material/area_chart:', url_path="/liquidity_dashboard"),
         st.Page(exchanges_metrics.app, title='Exchanges Metrics', icon=':material/analytics:', url_path="/exchanges_metrics"),
-        st.Page(stablecoin_metrics.app, title='Stablecoins Metrics', icon=':material/analytics:', url_path="/stablecoins_metrics")
+        st.Page(crypto_analysis.app, title='Crypto Analysis', icon=':material/poll:', url_path="/crypto_analysis")
     ]
 })
 
