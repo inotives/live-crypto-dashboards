@@ -1,0 +1,88 @@
+{
+    "events": [
+        {
+            "start_date":{
+                "year":"2012",
+                "month":"6"
+            },
+            "media":{
+                "url":"https://img.playbook.com/DujBxH7nk-ksAh1Yaa5N8x407JE9EbuZDUbd0bhEm9M/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzMxNjI3ZWE3/LWM0ZjUtNDliYy05/OGY1LTY4NzkxNzRj/YzhlNA", 
+                "credit":"ERIAN NXP"
+            },
+            "text":{
+                "headline":"Freelance Web Developer",
+                "text":"Web developments in PHP, Javascript (NodeJs, ReactJs), Python (Flask) and MySQL. Worked on Energy consumption dashboard for IoT around NTU campus and dashboard IoT control of virtual room."
+            }
+        },
+        {
+            "start_date":{
+                "year":"2013",
+                "month":"8"
+            },
+            "media":{
+                "url":"https://eits.uga.edu/_resources/files/images/Autodesk1.png", 
+                "credit":"Autodesk"
+            },
+            "text":{
+                "headline":"Autodesk Internship",
+                "text":"Responsible for developing automation tools in python for auto capture screencast for tutorial videos for AutoCAD."
+            }
+        },
+        {
+            "start_date":{
+                "year":"2013",
+                "month":"12"
+            },
+            "media":{
+                "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYAC862iIBZ8-pCYbFySY_yWEIQExW6zr7HA&s", 
+                "credit":"BalancedConsultancy"
+            },
+            "text":{
+                "headline":"Senior Software Engineer",
+                "text":"Using PHP (Laravel), Javascript (NodeJs, ReactJs) and Python (Flask) for ERP, CRM, CMS and REST-API for backend of mobile applications."
+            }
+        },
+        {
+            "start_date":{
+                "year":"2015",
+                "month":"03"
+            },
+            "media":{
+                "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzoZHqQ3MqTWNCOVQj3gYdtIqAfO1X3bnong&s", 
+                "credit":"itBit Exchange"
+            },
+            "text":{
+                "headline":"Tech Operation Engineer",
+                "text":"Responsible for API (REST & FIX) integrations for customers, developing automation tools with Python, and crypto offline wallet managements."
+            }
+        },
+        {
+            "start_date":{
+                "year":"2018",
+                "month":"11"
+            },
+            "media":{
+                "url":"https://paxos.com/wp-content/uploads/2022/05/Paxos-Logo-Files-Img.png", 
+                "credit":"Paxos"
+            },
+            "text":{
+                "headline":"Tech Operation Support & Analyst",
+                "text":"Responsible for customer operations and onboarding, developing dashboards to analyze exchange metrics, and contributing to the evaluation of stablecoin performance."
+            }
+        },
+        {
+            "start_date":{
+                "year":"2022",
+                "month":"06"
+            },
+            "media":{
+                "url":"https://paxos.com/wp-content/uploads/2022/05/Paxos-Logo-Files-Img.png", 
+                "credit":"Paxos"
+            },
+            "text":{
+                "headline":"Senior Data Analyst",
+                "text":"Conducted comprehensive data analysis on customer risk ratings, stablecoin on-chain metrics, customer behavior, sentiment analysis, trading metrics, and regulatory reporting."
+            }
+        }
+    ]
+}
