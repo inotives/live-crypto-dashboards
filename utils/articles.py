@@ -12,7 +12,7 @@ for file in ARTICLE_PATH.glob('*.md'):
     with file.open('r', encoding='utf-8') as f:
         markdown_files[file.name] = f.read()
 
-BLOGS = [
+ARTICLES = [
 {
     "post_title": "Data Analysis in Crypto using OHLCV data",
     "post_date": '2024-08-01',

@@ -1,6 +1,6 @@
 # pages/_4_blog.py
 import streamlit as st
-from utils.blogs import BLOGS
+from utils.articles import ARTICLES
 from datetime import datetime
 
 def find_posts(query, posts):
@@ -28,7 +28,7 @@ def app():
     search_query = st.text_input("Search for a post")
 
     # Sort posts by date (latest to earliest)
-    sorted_posts = sort_posts_by_date(BLOGS)
+    sorted_posts = sort_posts_by_date(ARTICLES)
 
     # Filter posts based on the search query
     if search_query:
