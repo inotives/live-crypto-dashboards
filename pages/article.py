@@ -50,7 +50,7 @@ def app():
                 st.image("https://via.placeholder.com/100", width=100)  # Placeholder if no image is available
 
         with col2:
-            if st.button(f"{post["post_title"]} ... ... {post['post_date']}"):  # Button for each post title
+            if st.button(f"{post['post_title']} ... ... {post['post_date']}"):  # Button for each post title
                 # Update the container with the selected post's content
                 update_container(post, container=container)
     
