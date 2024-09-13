@@ -6,11 +6,12 @@ skills_n_tools = pd.DataFrame([
     {'SKILLS & TOOLS': 'Python', 'PROFICIENT-LEVEL': 'Expert', 'YEAR-EXP': 10, 'ADDITIONAL-NOTES': 'Pandas, Numpy, Requests'},
     {'SKILLS & TOOLS': 'SQL', 'PROFICIENT-LEVEL': 'Expert', 'YEAR-EXP': 10, 'ADDITIONAL-NOTES': 'PostgreSQL, MySQL'},
     {'SKILLS & TOOLS': 'Blockchain', 'PROFICIENT-LEVEL': 'Advanced', 'YEAR-EXP': 9, 'ADDITIONAL-NOTES': 'Ethereum, Bitcoin, Solana, Polygon'},
-    {'SKILLS & TOOLS': 'Data Vis (Looker & Tableau)', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 3, 'ADDITIONAL-NOTES': ''},
+    {'SKILLS & TOOLS': 'Data Vis (Looker & Tableau)', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 4, 'ADDITIONAL-NOTES': ''},
+    {'SKILLS & TOOLS': 'Storytelling', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 4, 'ADDITIONAL-NOTES': ''},
     {'SKILLS & TOOLS': 'Data Analysis', 'PROFICIENT-LEVEL': 'Advanced', 'YEAR-EXP': 6, 'ADDITIONAL-NOTES': ''},
-    {'SKILLS & TOOLS': 'Sentiment Analysis', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 1, 'ADDITIONAL-NOTES': ''},
     {'SKILLS & TOOLS': 'Descriptive Analysis', 'PROFICIENT-LEVEL': 'Advanced', 'YEAR-EXP': 3, 'ADDITIONAL-NOTES': ''},
-    {'SKILLS & TOOLS': 'Predictive Analysis', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 2, 'ADDITIONAL-NOTES': ''}
+    {'SKILLS & TOOLS': 'Predictive Analysis', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 2, 'ADDITIONAL-NOTES': 'Forecasting with ARIMA, SARIMAX, LSTM'},
+    {'SKILLS & TOOLS': 'Sentiment Analysis', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 1, 'ADDITIONAL-NOTES': ''}
 
 ])
 skills_n_tools.set_index('SKILLS & TOOLS', inplace=True) 
