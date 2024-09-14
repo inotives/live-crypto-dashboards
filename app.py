@@ -13,7 +13,7 @@ if 'fetch_data_running' not in st.session_state:
 st.logo(str(CURRENT_DIR / "logo.png"), link="", icon_image=str(CURRENT_DIR / "logo.png"))
 
 # Import all pages
-from pages import home,liquidity_dashboard, about, exchanges_metrics, crypto_analysis, article
+from webpages import home,liquidity_dashboard, about, exchanges_metrics, crypto_analysis, article
 
 # Navigations
 pg = st.navigation({

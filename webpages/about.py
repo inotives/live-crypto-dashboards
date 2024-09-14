@@ -2,19 +2,28 @@ import streamlit as st
 import streamlit_timeline as sl
 import pandas as pd
 
-skills_n_tools = pd.DataFrame([
-    {'SKILLS & TOOLS': 'Python', 'PROFICIENT-LEVEL': 'Expert', 'YEAR-EXP': 10, 'ADDITIONAL-NOTES': 'Pandas, Numpy, Requests'},
-    {'SKILLS & TOOLS': 'SQL', 'PROFICIENT-LEVEL': 'Expert', 'YEAR-EXP': 10, 'ADDITIONAL-NOTES': 'PostgreSQL, MySQL'},
-    {'SKILLS & TOOLS': 'Blockchain', 'PROFICIENT-LEVEL': 'Advanced', 'YEAR-EXP': 9, 'ADDITIONAL-NOTES': 'Ethereum, Bitcoin, Solana, Polygon'},
-    {'SKILLS & TOOLS': 'Data Vis (Looker & Tableau)', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 4, 'ADDITIONAL-NOTES': ''},
-    {'SKILLS & TOOLS': 'Storytelling', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 4, 'ADDITIONAL-NOTES': ''},
-    {'SKILLS & TOOLS': 'Data Analysis', 'PROFICIENT-LEVEL': 'Advanced', 'YEAR-EXP': 6, 'ADDITIONAL-NOTES': ''},
-    {'SKILLS & TOOLS': 'Descriptive Analysis', 'PROFICIENT-LEVEL': 'Advanced', 'YEAR-EXP': 3, 'ADDITIONAL-NOTES': ''},
-    {'SKILLS & TOOLS': 'Predictive Analysis', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 2, 'ADDITIONAL-NOTES': 'Forecasting with ARIMA, SARIMAX, LSTM'},
-    {'SKILLS & TOOLS': 'Sentiment Analysis', 'PROFICIENT-LEVEL': 'Proficient', 'YEAR-EXP': 1, 'ADDITIONAL-NOTES': ''}
+def skillntool(name, level, exp_year, notes):
+    return {
+        'SKILLS & TOOLS': name,
+        'PROFICIENT-LEVEL': level,
+        'YEAR-EXP': exp_year,
+        'ADDITIONAL-NOTES': notes
+    }
 
+skills_n_tools = pd.DataFrame([
+    skillntool('Python', 'Expert', 10, 'Pandas, Numpy, Requests'),
+    skillntool('SQL', 'Expert', 10, 'PostgreSQL, MySQL'),
+    skillntool('Blockchain', 'Advanced', 9, 'Ethereum, Bitcoin, Solana, Polygon'),
+    skillntool('Data Vis (Looker & Tableau)', 'Proficient', 4, ''),
+    skillntool('Storytelling', 'Proficient', 4, ''),
+    skillntool('Data Analysis', 'Advanced', 6, ''),
+    skillntool('Descriptive Analysis', 'Advanced', 3, ''),
+    skillntool('Predictive Analysis', 'Proficient', 2, 'Forecasting with ARIMA, SARIMAX, LSTM'),
+    skillntool('Sentiment Analysis', 'Proficient', 1, '')
 ])
 skills_n_tools.set_index('SKILLS & TOOLS', inplace=True) 
+
+
 
 def app():
     st.session_state.page = 'about'
@@ -39,6 +48,9 @@ def app():
     st.subheader('Skills & Tools')
     st.caption('Below are list of skillset i acquired through my years of experiences as well as tools or platform i used in my daily workflow as data scientist/analyst.')
     st.table(skills_n_tools)
+
+    st.subheader('Connect with me')
+    
 
 
 

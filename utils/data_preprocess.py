@@ -1,8 +1,8 @@
 import ta 
 import pandas as pd 
 
+# Data preprocess & Clean up
 def data_prep(data):
-    
     # make sure date as index
     data['metric_date'] = pd.to_datetime(data['metric_date'])
     data.set_index('metric_date', inplace=True)
@@ -17,7 +17,7 @@ def data_prep(data):
 def add_technical_indicitors(data):
     """Add commonly technical indicator to improve OHLCV data."""
 
-    '''data prep '''
+    '''data preprocess & clean-up '''
     data = data_prep(data)
 
     '''price_change: price changes during the trading period '''
