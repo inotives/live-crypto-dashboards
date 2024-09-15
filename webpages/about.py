@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit_timeline as sl
 import pandas as pd
 
-def skillntool(name, level, exp_year, notes):
+def const_skillntool(name, level, exp_year, notes):
     return {
         'SKILLS & TOOLS': name,
         'PROFICIENT-LEVEL': level,
@@ -10,19 +10,40 @@ def skillntool(name, level, exp_year, notes):
         'ADDITIONAL-NOTES': notes
     }
 
+def const_area_of_interest(name, description, icon):
+    return {
+        'name': name,
+        'description': description,
+        'icon': icon
+    }
+
 skills_n_tools = pd.DataFrame([
-    skillntool('Python', 'Expert', 10, 'Pandas, Numpy, Requests'),
-    skillntool('SQL', 'Expert', 10, 'PostgreSQL, MySQL'),
-    skillntool('Blockchain', 'Advanced', 9, 'Ethereum, Bitcoin, Solana, Polygon'),
-    skillntool('Data Vis (Looker & Tableau)', 'Proficient', 4, ''),
-    skillntool('Storytelling', 'Proficient', 4, ''),
-    skillntool('Data Analysis', 'Advanced', 6, ''),
-    skillntool('Descriptive Analysis', 'Advanced', 3, ''),
-    skillntool('Predictive Analysis', 'Proficient', 2, 'Forecasting with ARIMA, SARIMAX, LSTM'),
-    skillntool('Sentiment Analysis', 'Proficient', 1, '')
+    const_skillntool('Python', 'Expert', 10, 'Pandas, Numpy, Requests'),
+    const_skillntool('SQL', 'Expert', 10, 'PostgreSQL, MySQL'),
+    const_skillntool('Blockchain', 'Advanced', 9, 'Ethereum, Bitcoin, Solana, Polygon'),
+    const_skillntool('Data Vis (Looker & Tableau)', 'Proficient', 4, ''),
+    const_skillntool('Storytelling', 'Proficient', 4, ''),
+    const_skillntool('Data Analysis', 'Advanced', 6, ''),
+    const_skillntool('Descriptive Analysis', 'Advanced', 3, ''),
+    const_skillntool('Predictive Analysis', 'Proficient', 2, 'Forecasting with ARIMA, SARIMAX, LSTM'),
+    const_skillntool('Sentiment Analysis', 'Proficient', 1, '')
 ])
 skills_n_tools.set_index('SKILLS & TOOLS', inplace=True) 
 
+
+
+# Create styled cards with a shadow
+
+card_style = """
+    {
+        border: 1px groove #52546a;
+        border-radius: 10px;
+        padding-left: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: -6px 8px 20px 1px #00000052;
+    }
+"""
 
 
 def app():
@@ -51,6 +72,14 @@ def app():
 
     st.subheader('Connect with me')
     
+    # col1, _, col2 = st.columns([3, 1, 1.6])
+    # with col1:
+    #     with stylable_container("Card1", css_styles=card_style):
+    #         "**Card 1**"
+    #         "This is an example of basic card text."
 
+    # with col2:
+    #     with stylable_container("Card2", css_styles=card_style):
+    #         st.metric("New York", "19.8M", "367K", help="Population growth")
 
 

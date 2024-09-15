@@ -126,3 +126,33 @@ def add_technical_indicitors(data):
 
 
     return data
+
+
+# removing symbols and standardize text - main for text pre-processing before analysis like sentiment analysis.
+def standardize_text(data, text_field):
+    #removes special strings and non text
+    data[text_field] = data[text_field].str.replace(r"http\S+", "")
+    data[text_field] = data[text_field].str.replace(r"http", "")
+    data[text_field] = data[text_field].str.replace(r"@\S+", "")
+    data[text_field] = data[text_field].str.replace(r"[^A-Za-z0-9(),!?@\'\`\"\_\n]", " ")
+    data[text_field] = data[text_field].str.replace(r"@", "at")
+    data[text_field] = data[text_field].str.replace(r'\d+', '') # removing number, they dont contribute much to sentiment
+    data[text_field] = data[text_field].str.lower()
+    
+    return data
+
+
+# Extracting paragraphs with keyword
+def extract_paragraphs_with_keyword(text, keyword):
+    # Split the text into paragraphs using newline as the separator
+    paragraphs = text.split("\n")
+    
+    # Normalize keyword (lowercase) for case-insensitive matching
+    keyword = keyword.lower()
+
+    # Extract paragraphs containing the keyword (case-insensitive)
+    matched_paragraphs = [para for para in paragraphs if keyword in para.lower()]
+    
+    return matched_paragraphs
+
+
